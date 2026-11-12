@@ -1,0 +1,185 @@
+{
+  "galaxy-a56": {
+    "colors": [
+      "awesome-graphite",
+      "awesome-lightgray",
+      "awesome-olive"
+    ],
+    "gallery": [
+      "gallery-1",
+      "gallery-2"
+    ]
+  },
+  "galaxy-s24-fe": {
+    "colors": [
+      "blue",
+      "graphite",
+      "mint"
+    ],
+    "gallery": [
+      "gallery-1",
+      "gallery-2"
+    ]
+  },
+  "galaxy-s25": {
+    "colors": [
+      "icyblue",
+      "mint",
+      "navy",
+      "silver-shadow"
+    ],
+    "gallery": [
+      "gallery-1",
+      "gallery-2"
+    ]
+  },
+  "galaxy-s25-ultra": {
+    "colors": [
+      "titanium-black",
+      "titanium-gray",
+      "titanium-silverblue",
+      "titanium-whitesilver"
+    ],
+    "gallery": [
+      "gallery-1",
+      "gallery-2"
+    ]
+  },
+  "galaxy-z-flip7": {
+    "colors": [
+      "blue-shadow",
+      "coral-red",
+      "jetblack"
+    ],
+    "gallery": [
+      "gallery-1",
+      "gallery-2"
+    ]
+  },
+  "galaxy-z-fold7": {
+    "colors": [
+      "blue-shadow",
+      "jetblack",
+      "silver-shadow"
+    ],
+    "gallery": [
+      "gallery-1",
+      "gallery-2"
+    ]
+  },
+  "iphone-14": {
+    "colors": [
+      "blue",
+      "midnight",
+      "purple",
+      "starlight"
+    ],
+    "gallery": []
+  },
+  "iphone-15": {
+    "colors": [
+      "black",
+      "blue",
+      "green",
+      "pink",
+      "yellow"
+    ],
+    "gallery": []
+  },
+  "iphone-16": {
+    "colors": [
+      "black",
+      "pink",
+      "teal",
+      "ultramarine",
+      "white"
+    ],
+    "gallery": []
+  },
+  "iphone-17": {
+    "colors": [
+      "black",
+      "lavender",
+      "mist-blue",
+      "sage",
+      "white"
+    ],
+    "gallery": []
+  },
+  "iphone-17-pro": {
+    "colors": [
+      "cosmic-orange",
+      "deep-blue",
+      "silver"
+    ],
+    "gallery": []
+  },
+  "iphone-17-pro-max": {
+    "colors": [
+      "cosmic-orange",
+      "deep-blue",
+      "silver"
+    ],
+    "gallery": []
+  },
+  "iphone-18-pro-max": {
+    "colors": [
+      "black",
+      "burgundy",
+      "glacier",
+      "silver"
+    ],
+    "gallery": []
+  },
+  "iphone-air": {
+    "colors": [
+      "cloud-white",
+      "light-gold",
+      "sky-blue",
+      "space-black"
+    ],
+    "gallery": []
+  },
+  "iphone-duo": {
+    "colors": [
+      "night-sky",
+      "star-white"
+    ],
+    "gallery": []
+  },
+  "pixel-10": {
+    "colors": [
+      "frost",
+      "indigo",
+      "lemongrass",
+      "obsidian"
+    ],
+    "gallery": [
+      "gallery-1",
+      "gallery-2"
+    ]
+  },
+  "pixel-10-pro": {
+    "colors": [
+      "jade",
+      "moonstone",
+      "obsidian",
+      "porcelain"
+    ],
+    "gallery": [
+      "gallery-1",
+      "gallery-2"
+    ]
+  },
+  "pixel-9a": {
+    "colors": [
+      "iris",
+      "obsidian",
+      "porcelain"
+    ],
+    "gallery": [
+      "gallery-1",
+      "gallery-2"
+    ]
+  }
+}

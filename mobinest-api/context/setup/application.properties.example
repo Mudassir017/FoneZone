@@ -1,0 +1,13 @@
+# Copy to <project>/config/application.properties (git-ignored) and fill in the values,
+# OR run context/setup/setup-database.ps1, which generates this file for you.
+# Spring Boot loads ./config/application.properties automatically when started from the project folder.
+
+spring.datasource.url=jdbc:mysql://localhost:3306/mobinest?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true
+spring.datasource.username=mobinest_app
+spring.datasource.password=CHANGE_ME
+
+# Optional overrides (defaults are in src/main/resources/application.yml)
+# mobinest.clerk.issuer=https://<your-instance>.clerk.accounts.dev
+# mobinest.clerk.authorized-parties=http://localhost:5173
+# mobinest.cors.allowed-origins=http://localhost:5173
+# mobinest.seed.enabled=true

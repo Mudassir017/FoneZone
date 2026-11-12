@@ -1,0 +1,53 @@
+# MobiNest API configuration.
+# Secrets are NOT stored here. For local development they live in
+# ./config/application.properties (git-ignored, auto-loaded by Spring Boot);
+# in production use environment variables (DB_URL, DB_USERNAME, DB_PASSWORD, ...).
+spring:
+  application:
+    name: mobinest-api
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/mobinest?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true}
+    username: ${DB_USERNAME:mobinest_app}
+    password: ${DB_PASSWORD:}
+  jpa:
+    open-in-view: false            # no lazy loading from controllers; services return DTOs
+    hibernate:
+      ddl-auto: none               # Flyway owns the schema (src/main/resources/db/migration)
+    properties:
+      hibernate:
+        default_batch_fetch_size: 100   # avoids N+1 when loading variants/colours/SKUs
+        jdbc.time_zone: UTC
+  flyway:
+    enabled: true
+
+server:
+  port: 8080
+  shutdown: graceful
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
+
+mobinest:
+  clerk:
+    # Clerk "Frontend API" URL of the NammaMobiles development instance (public, not a secret).
+    issuer: ${CLERK_ISSUER:https://unique-glider-3348.clerk.accounts.dev}
+    # Origins allowed in the session token's `azp` claim.
+    authorized-parties: ${CLERK_AUTHORIZED_PARTIES:http://localhost:5173}
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173}
+  seed:
+    enabled: ${SEED_ENABLED:true}  # loads the sample catalogue into an empty database
+  admin:
+    # Clerk user ids (user_...) that are always ADMIN, comma-separated; empty by default.
+    # They are promoted in the customer table on their next API call. See context/ADMIN.md.
+    clerk-user-ids: ${ADMIN_CLERK_USER_IDS:}
+    role-cache-ttl: ${ADMIN_ROLE_CACHE_TTL:30s}  # how long a user's role is cached after a DB lookup

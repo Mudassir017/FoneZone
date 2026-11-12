@@ -1,0 +1,98 @@
+[
+  {
+    "id": "apple",
+    "name": "Apple",
+    "tagline": "iPhone 17 Pro, iPhone Air & more",
+    "accent": "#1d1d1f",
+    "hero": {
+      "phone": "iphone-17-pro",
+      "color": "Cosmic Orange"
+    },
+    "active": true
+  },
+  {
+    "id": "samsung",
+    "name": "Samsung",
+    "tagline": "Galaxy S, Z Fold, Z Flip & A series",
+    "accent": "#1428a0",
+    "hero": {
+      "phone": "galaxy-s25-ultra",
+      "color": "Titanium Silverblue"
+    },
+    "active": true
+  },
+  {
+    "id": "google",
+    "name": "Google Pixel",
+    "tagline": "Pixel 10 Pro, Pixel 10 & Pixel 9a",
+    "accent": "#4285f4",
+    "hero": {
+      "phone": "pixel-10-pro",
+      "color": "Moonstone"
+    },
+    "active": true
+  },
+  {
+    "id": "oneplus",
+    "name": "OnePlus",
+    "tagline": "Flagship & Nord",
+    "accent": "#eb0028",
+    "active": false
+  },
+  {
+    "id": "xiaomi",
+    "name": "Xiaomi",
+    "tagline": "Xiaomi & Redmi",
+    "accent": "#ff6900",
+    "active": false
+  },
+  {
+    "id": "vivo",
+    "name": "Vivo",
+    "tagline": "X & V series",
+    "accent": "#415fff",
+    "active": false
+  },
+  {
+    "id": "oppo",
+    "name": "OPPO",
+    "tagline": "Find & Reno",
+    "accent": "#1f8a4c",
+    "active": false
+  },
+  {
+    "id": "nothing",
+    "name": "Nothing",
+    "tagline": "Glyph interface",
+    "accent": "#111111",
+    "active": false
+  },
+  {
+    "id": "motorola",
+    "name": "Motorola",
+    "tagline": "Edge & Razr",
+    "accent": "#5c6bc0",
+    "active": false
+  },
+  {
+    "id": "realme",
+    "name": "realme",
+    "tagline": "GT & Number series",
+    "accent": "#d4a800",
+    "active": false
+  },
+  {
+    "id": "iqoo",
+    "name": "iQOO",
+    "tagline": "Performance phones",
+    "accent": "#f5a400",
+    "active": false
+  },
+  {
+    "id": "poco",
+    "name": "POCO",
+    "tagline": "Value flagships",
+    "accent": "#ffcc00",
+    "active": false
+  }
+]

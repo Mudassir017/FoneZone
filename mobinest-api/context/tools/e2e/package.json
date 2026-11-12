@@ -1,0 +1,7 @@
+{
+  "name": "namma-mobiles-e2e",
+  "private": true,
+  "description": "End-to-end smoke test for the Namma Mobiles storefront (drives installed Edge/Chrome)",
+  "scripts": { "test": "node e2e.cjs" },
+  "dependencies": { "playwright-core": "^1.50.0" }
+}

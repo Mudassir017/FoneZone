@@ -1,0 +1,42 @@
+[
+  {
+    "id": "cases",
+    "name": "Cases & Covers",
+    "icon": "case"
+  },
+  {
+    "id": "screen-guards",
+    "name": "Screen Protection",
+    "icon": "shield"
+  },
+  {
+    "id": "chargers",
+    "name": "Chargers",
+    "icon": "charger"
+  },
+  {
+    "id": "cables",
+    "name": "Cables",
+    "icon": "cable"
+  },
+  {
+    "id": "audio",
+    "name": "Earbuds & Audio",
+    "icon": "audio"
+  },
+  {
+    "id": "power-banks",
+    "name": "Power Banks",
+    "icon": "battery"
+  },
+  {
+    "id": "wearables",
+    "name": "Smartwatches",
+    "icon": "watch"
+  },
+  {
+    "id": "mounts",
+    "name": "Mounts & Stands",
+    "icon": "mount"
+  }
+]
