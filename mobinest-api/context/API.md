@@ -9,12 +9,13 @@ All responses are JSON. Money values are rupees (numbers, e.g. `149900`). Timest
 - Users sign in on the React app with **Clerk**. The app gets a session token with `await getToken()` (from `useAuth()` in `@clerk/react`) and sends it as
   `Authorization: Bearer <token>`.
 - The API verifies the token's signature (Clerk JWKS), issuer, expiry and `azp` (must be `http://localhost:5173` in development).
-- Public endpoints need no token. Protected ones return **401** without a valid token. `/api/admin/**` needs role ADMIN (not built yet).
+- Public endpoints need no token. Protected ones return **401** without a valid token. `/api/admin/**` needs role ADMIN (`customer.role`, checked on the server; 403 otherwise). See [ADMIN.md](ADMIN.md) for every admin endpoint and how to become an admin.
 
 | Access | Endpoints |
 |---|---|
 | Public | `GET /api/catalog`, `/api/brands`, `/api/conditions`, `/api/phones/**`, `/api/accessories/**`; `POST /api/orders`, `/api/coupons/validate`; `/actuator/health`; Swagger |
 | Signed-in | `GET /api/me`, `/api/orders/me`, `/api/orders/{orderNumber}` |
+| Admin (`customer.role = ADMIN`) | `/api/admin/**`: dashboard, orders, payments, brands, phones, SKUs, accessories, coupons, customers, audit ([ADMIN.md](ADMIN.md)) |
 
 ## Error format (RFC 9457 problem details)
 

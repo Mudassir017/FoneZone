@@ -40,6 +40,14 @@ public class GlobalExceptionHandler {
         return pd;
     }
 
+    /** Malformed or unreadable JSON body: a client error (400), not a server error. */
+    @ExceptionHandler(org.springframework.http.converter.HttpMessageNotReadableException.class)
+    ProblemDetail handleUnreadable(org.springframework.http.converter.HttpMessageNotReadableException ex) {
+        ProblemDetail pd = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, "The request body is not valid JSON.");
+        pd.setTitle("MALFORMED_REQUEST");
+        return pd;
+    }
+
     @ExceptionHandler(Exception.class)
     ProblemDetail handleUnexpected(Exception ex) {
         log.error("Unhandled error", ex);

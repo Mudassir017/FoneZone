@@ -83,6 +83,7 @@ html.dark .adm {
   min-height: var(--adm-topbar);
 }
 .adm-sidebar__brand .site-logo__badge { width: 36px; height: 36px; }
+.adm .adm-sidebar__brand .site-logo { color: var(--ink); text-decoration: none; }
 .adm-sidebar__tag {
   font-size: 11px;
   font-weight: 700;
@@ -140,7 +141,7 @@ html.dark .adm {
 @media (min-width: 1024px) {
   .adm { grid-template-columns: var(--adm-sidebar) 1fr; }
   .adm-sidebar { position: sticky; top: 0; height: 100vh; transform: none; box-shadow: none; }
-  .adm-menu-btn, .adm-scrim { display: none; }
+  .adm .adm-menu-btn, .adm .adm-scrim { display: none; }
   .adm-content { padding: 24px 28px 56px; }
   .adm-topbar { padding: 0 28px; }
 }
@@ -355,10 +356,10 @@ html.dark .adm-btn--primary { color: #06101f; }
 .adm-dl dt { color: var(--text-muted); }
 .adm-dl dd { margin: 0; color: var(--ink); font-weight: 550; text-align: right; overflow-wrap: anywhere; }
 .adm-dl .total { font-size: 16px; font-weight: 750; }
-.adm-timeline { position: relative; padding-left: 18px; display: grid; gap: 16px; }
+.adm .adm-timeline { position: relative; margin: 0; padding: 0 0 0 22px; list-style: none; display: grid; gap: 16px; }
 .adm-timeline::before { content: ''; position: absolute; left: 5px; top: 6px; bottom: 6px; width: 2px; background: var(--line); }
 .adm-timeline li { position: relative; }
-.adm-timeline li::before { content: ''; position: absolute; left: -18px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--card); border: 2px solid var(--primary); }
+.adm-timeline li::before { content: ''; position: absolute; left: -22px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--card); border: 2px solid var(--primary); }
 .adm-timeline li.is-payment::before { border-color: var(--success); }
 .adm-alert { display: flex; gap: 10px; padding: 12px 14px; border-radius: 10px; font-size: 13.5px; align-items: flex-start; }
 .adm-alert svg { width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px; }

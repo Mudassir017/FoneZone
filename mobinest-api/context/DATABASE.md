@@ -2,7 +2,7 @@
 
 MySQL **8.0.45** · schema **`mobinest`** · charset `utf8mb4` / collation `utf8mb4_0900_ai_ci` · engine InnoDB
 App user: **`mobinest_app`@localhost** (SELECT, INSERT, UPDATE, DELETE, CREATE, ALTER, DROP, INDEX, REFERENCES on `mobinest.*` only).
-Schema owner: **Flyway** (`src/main/resources/db/migration`), current version **v6** (V4 iPhone Duo, V5 rebrand texts, V6 iPhone 18 Pro Max).
+Schema owner: **Flyway** (`src/main/resources/db/migration`), current version **v7** (V4 iPhone Duo, V5 rebrand texts, V6 iPhone 18 Pro Max, V7 admin back office: `order_status_history`, `admin_audit_log`, see [ADMIN.md](ADMIN.md)).
 
 ## 1. Live statistics
 

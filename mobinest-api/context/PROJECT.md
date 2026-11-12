@@ -140,6 +140,8 @@ mobinest-api/
 | `mobinest.clerk.authorized-parties` | `CLERK_AUTHORIZED_PARTIES` | `http://localhost:5173` |
 | `mobinest.cors.allowed-origins` | `CORS_ALLOWED_ORIGINS` | `http://localhost:5173` |
 | `mobinest.seed.enabled` | `SEED_ENABLED` | `true` |
+| `mobinest.admin.clerk-user-ids` | `ADMIN_CLERK_USER_IDS` | _(empty)_ Clerk user ids that are always ADMIN (comma-separated) |
+| `mobinest.admin.role-cache-ttl` | `ADMIN_ROLE_CACHE_TTL` | `30s` |
 | `server.port` | `SERVER_PORT` | `8080` |
 
 ## 8. Roadmap
@@ -155,7 +157,7 @@ mobinest-api/
 | 4b | Product image URLs in the API (optional) | Proposed |
 | 5 | Razorpay payments + webhook + auto-cancel | Planned |
 | 6 | Server-side cart, wishlist, addresses | Planned |
-| 7 | Admin APIs (catalogue, stock, prices, orders, coupons) | Planned |
+| 7 | Admin APIs + admin UI (dashboard, orders, payments, catalogue, stock, prices, coupons, roles, audit) | ✅ Done 12 Nov (see ADMIN.md) |
 | 8 | Trade-in API, reviews, emails | Planned |
 | 9 | Spring AI phone advisor | Planned |
 | 10 | Testcontainers integration tests, Docker, CI, deployment | Planned |

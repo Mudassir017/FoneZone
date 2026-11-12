@@ -296,7 +296,7 @@ All non-secret settings live in `src/main/resources/application.yml` and can be 
 | `CLERK_AUTHORIZED_PARTIES` | Origins allowed in the token's `azp` | `http://localhost:5173` |
 | `CORS_ALLOWED_ORIGINS` | Browser origins allowed to call the API | `http://localhost:5173` |
 | `SEED_ENABLED` | Load the sample catalogue into an empty DB | `true` |
-| `ADMIN_CLERK_USER_IDS` | Comma-separated Clerk user ids auto-promoted to ADMIN | empty |
+| `ADMIN_CLERK_USER_IDS` (`mobinest.admin.clerk-user-ids`) | Comma-separated Clerk user ids promoted to ADMIN on their next API call (restart required after changing) | empty |
 
 Secrets go in `config/application.properties` (git-ignored) or environment variables.
 
@@ -368,22 +368,30 @@ Full column list and stats: `context/DATABASE.md`.
 
 - **Sign-in is Clerk.** The React app shows Clerk's `<SignIn/>` / `<SignUp/>` (modal or `/sign-in`), themed light/dark. The "Development mode" banner is hidden via Clerk's official `appearance.options.unsafe_disableDevelopmentModeWarnings`. "Secured by Clerk" can only be removed in the Clerk Dashboard (Settings → Branding; paid plan for production).
 - **The API never stores passwords.** It verifies each request's Clerk JWT (signature via JWKS, issuer, expiry, `azp`). The first authenticated call creates a local `customer` row (JIT).
-- **Admins:** a user is an admin when their `customer.role = 'ADMIN'` in **our** database. Roles are never read from the token. To make yourself admin:
-  1. Sign up on the site and open **Account** once, so your customer row is created.
-  2. Promote yourself in MySQL:
-     ```sql
-     UPDATE customer SET role = 'ADMIN' WHERE email = 'you@example.com';
+- **Admins:** a user is an admin when their `customer.role = 'ADMIN'` in **our** database. Roles are never read from the token. The role is cached for 30 s and the cache is cleared on change. To make yourself the **first** admin:
+  1. Sign up on the site, then open **http://localhost:5173/admin**. The **"No admin access"** page shows your **Clerk user ID** (`user_…`) with a copy button. It's also in Clerk Dashboard → Users.
+  2. Either **configure** it and restart the API, which promotes you on your next call:
+     ```powershell
+     $env:ADMIN_CLERK_USER_IDS = "user_xxx"        # or add  mobinest.admin.clerk-user-ids=user_xxx  to config/application.properties
      ```
-     Or set `ADMIN_CLERK_USER_IDS=user_xxx` (your Clerk user id, from the Clerk Dashboard → Users) before starting the API.
-  3. Visit **http://localhost:5173/admin**.
-- **Admin features:**
-  - dashboard: revenue, orders by status, top sellers, low stock;
-  - orders: filters, detail, status changes with history, cancel restores stock;
-  - transactions / payments;
-  - catalogue: brand visibility, phones, SKU price and stock, accessories;
-  - coupons (CRUD);
-  - customers: promote and demote admins;
-  - an audit log of admin actions.
+     or **promote with SQL** (by Clerk ID; don't use email, because `customer.email` comes from the checkout form and isn't verified):
+     ```sql
+     UPDATE customer SET role = 'ADMIN' WHERE clerk_user_id = 'user_xxx';
+     -- if you've never used the shop yet:
+     INSERT INTO customer (clerk_user_id, role) VALUES ('user_xxx', 'ADMIN');
+     ```
+  3. Reload **/admin**. After that, other admins can be added in **Admin → Customers & admins**. You can't demote yourself, a configured (bootstrap) admin, or the last admin.
+  4. Developers can preview the admin UI with fake data at `/admin?preview=1`. This only works in `npm run dev` and is stripped from production builds.
+- **Admin features** (React `/admin/*` ↔ Spring `/api/admin/**`):
+  - **dashboard**: revenue (paid + COD to collect), orders by status, today / 7 / 30 days, average order value, daily chart, top phones, low stock, recent orders;
+  - **orders**: filters for status, payment, IST date range and search; detail with timeline; **status workflow** CONFIRMED → SHIPPED → DELIVERED, or CANCELLED. Cancelling **restores stock** (row-locked, never twice), and delivering a **COD** order marks it **PAID**;
+  - **transactions**: every payment, plus totals per method and status;
+  - **catalogue**: brand visibility, phones on/off, SKU price/MRP/stock edited inline (with a `STOCK_CHANGED` conflict check), accessories;
+  - **coupons**: create, edit, deactivate;
+  - **customers & admins**: order count, total spent, promote/demote;
+  - **audit log**: every admin write.
+- **Not built yet:** creating or deleting products, image upload, refund processing (refunds are marked manually).
+- **Database:** migration **V7 `admin_back_office`** adds `order_status_history` and `admin_audit_log`.
 - Details and endpoint examples: `context/ADMIN.md`.
 
 ---
@@ -402,7 +410,7 @@ Full column list and stats: `context/DATABASE.md`.
 
 | What | How |
 |---|---|
-| Backend unit tests | `cd mobinest-api ; .\mvnw.cmd test` (pricing, coupons, shipping, admin services and the role converter) |
+| Backend tests | `cd mobinest-api ; .\mvnw.cmd test`: **31 tests** (pricing, coupons and shipping, role service and converter, admin rules, and admin API security through the real Spring Security chain with MockMvc; the context-load test needs MySQL) |
 | Frontend lint | `cd mobinest ; npm run lint` |
 | Production build | `cd mobinest ; npm run build` |
 | **End-to-end (E2E)** | `context/tools/e2e/` drives your installed Microsoft Edge with Playwright: 23 checks (browse, search, filters, product, cart and coupon, **real guest checkout**, compare, wishlist, sell quote, brand pages, 404, Clerk modal and sign-up, account guard, theme toggle, mobile menu) plus a console-error and failed-request scan. See its README. Note: it creates real test orders. |

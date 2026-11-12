@@ -3,6 +3,30 @@
 All notable changes to MobiNest (backend, database and project setup). Newest first.
 Format: date · what changed · files/areas touched.
 
+## 2026-11-12 (≈16:20): admin back office (Clerk + ADMIN role)
+- **Access control:** `ClerkRoleJwtConverter` grants `ROLE_ADMIN` from `customer.role` (looked up by the JWT `sub`, cached 30 s, fail-closed; token role claims ignored). Bootstrap admins via `ADMIN_CLERK_USER_IDS` (`mobinest.admin.clerk-user-ids`, empty by default). `/api/admin/**`: 401 without/invalid token, 403 for non-admins.
+- **Flyway V7 `admin_back_office`:** `order_status_history`, `admin_audit_log`, indexes on `orders(created_at)`, `orders(status, created_at)`, `sku(stock)`. Applied to the live DB.
+- **Admin API (`com.mobinest.admin.*`):** dashboard KPIs; orders (filters, detail, timeline, status changes with restock on cancel, payment status); transactions + totals; brands/phones visibility, SKU and accessory price/stock (with stale-stock protection); coupons CRUD (soft delete); customers with order stats and role management; audit log.
+- **Admin UI (`mobinest/src/pages/admin/**`, lazy `/admin/*` route with its own layout):** sign-in redirect for signed-out users, "No admin access" page for others; dashboard, orders, order detail, transactions, coupons, brands, phones, SKUs, accessories, customers & admins, audit log. Admin button on the Account page (admins only). Dev-only `?preview=1` with fake data (excluded from production builds).
+- **Tests:** 31 pass (+23: role service/converter, admin rules, MockMvc security and endpoint tests with rolled-back writes).
+- Docs: **[ADMIN.md](ADMIN.md)** (how to become admin, every endpoint, screenshots in `screenshots/admin/`).
+
+## 2026-11-12 (≈18:00): admin side done, GitHub repo, final checks
+- **Admin side (subagent), complete:**
+  - Clerk + DB role (`ClerkRoleJwtConverter`, `CustomerRoleService`, bootstrap via `ADMIN_CLERK_USER_IDS`).
+  - Flyway **V7 `admin_back_office`** (`order_status_history`, `admin_audit_log`).
+  - `/api/admin/**`: dashboard, orders + status workflow, payments, catalogue, coupons, customers/roles, audit.
+  - React `/admin/*` back office. 23 new tests; **31/31 pass**. See `ADMIN.md`.
+- **Home polish (subagent):**
+  - Trending as a segmented control with up to 12 phones per tab.
+  - Budget cards with 3 product photos, no signal icon, tier typography.
+  - Gallery: muted autoplay while visible, plus "Watch with sound".
+  - Card text padding on grey bands (plus a site-wide `.section--tint .product-card__body` fix).
+- **Fix:** malformed JSON on store endpoints now returns **400 `MALFORMED_REQUEST`** instead of 500.
+- **GitHub:** monorepo prepared at `C:\Users\admin\NAMMA-MOBILES` for https://github.com/classtapacademy/NAMMA-MOBILES, containing `mobinest/`, `mobinest-api/`, a root README with screenshots and a root `.gitignore`.
+  - The old saved GitHub login (`harshit-tapacademy`) was removed from Windows Credential Manager at the owner's request.
+  - The first push must be done by the owner in a normal PowerShell window (`git push -u origin main`), signing in as the class account, because Claude Code's non-interactive shell can't show GitHub's sign-in.
+
 ## 2026-11-12 (≈17:00): brand hover effect + shareable guide
 - **"Pick your favourite":** Aceternity **Card Hover Effect** (`components/BrandHoverRow.jsx`, `motion`). A soft blue highlight glides between brand cards, just outside the card edge; it follows keyboard focus and respects reduced motion. Chosen by the main session at the owner's request; the 5-option preview remains at `/design/brand-cards`.
 - **`context/NAMMA-MOBILES-COMPLETE-GUIDE.md`:** the single shareable guide (setup from zero incl. your own Clerk keys, architecture, frontend, backend, DB, API, admin, payments, testing, recipes, troubleshooting, decisions, timeline, legal).

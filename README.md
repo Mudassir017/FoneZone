@@ -178,10 +178,9 @@ cd mobinest     ; npm run dev
 ---
 
 ## 🔐 Admin access
-1. Sign up on the site and open **Account** once (this creates your customer record).
-2. Promote yourself in MySQL: `UPDATE customer SET role = 'ADMIN' WHERE email = 'you@example.com';`
-   Or start the API with `ADMIN_CLERK_USER_IDS=user_xxx` (your Clerk user id).
-3. Open **http://localhost:5173/admin**.
+1. Sign up on the site, then open **http://localhost:5173/admin**. The "No admin access" page shows your **Clerk user ID** (`user_…`) with a copy button.
+2. Make yourself the first admin, either by restarting the API with `ADMIN_CLERK_USER_IDS=user_xxx` or with SQL: `UPDATE customer SET role = 'ADMIN' WHERE clerk_user_id = 'user_xxx';`
+3. Reload **/admin**. Add more admins from **Admin → Customers & admins**.
 
 Details: [`ADMIN.md`](mobinest-api/context/ADMIN.md).
 
