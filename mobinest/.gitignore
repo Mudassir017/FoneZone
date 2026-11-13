@@ -10,3 +10,8 @@ dist-ssr
 !.vscode/extensions.json
 .idea
 *.log
+
+# Vercel CLI link
+.vercel
+.vercel
+.env*
