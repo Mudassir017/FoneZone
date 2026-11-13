@@ -1,0 +1,6 @@
+# Not needed on the server (docs, helper tools, local secrets, build output)
+context/
+config/
+target/
+.idea/
+.vscode/
