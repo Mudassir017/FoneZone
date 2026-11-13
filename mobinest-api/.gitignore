@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ### Local secrets (DB password etc.) - Spring Boot auto-loads ./config/application.properties
-config/
+/config/
