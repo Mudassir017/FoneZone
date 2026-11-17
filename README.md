@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="mobinest/public/brand/namma-mobiles-logo-256.webp" alt="Namma Mobiles logo" width="120" />
+<img src="mobinest/public/brand/FONEZONE-logo-256.webp" alt="FoneZone logo" width="120" />
 
-# Namma Mobiles
+# FoneZone
 
 **Every phone. Every brand. One destination.**
 
@@ -17,7 +17,7 @@ A full-stack e-commerce platform for India that sells **only mobile phones**: br
 ![Flyway](https://img.shields.io/badge/Flyway-migrations-CC0200?logo=flyway&logoColor=white)
 ![Clerk](https://img.shields.io/badge/Auth-Clerk-6C47FF?logo=clerk&logoColor=white)
 
-<img src="docs/screenshots/home-light.png" alt="Namma Mobiles home page" width="900" />
+<img src="docs/screenshots/home-light.png" alt="FoneZone home page" width="900" />
 
 </div>
 
@@ -103,7 +103,7 @@ flowchart LR
 ## 🗂️ Repository structure
 
 ```
-NAMMA-MOBILES/
+FONEZONE/
 ├── mobinest/                  # 🎨 Frontend: React + Vite storefront and admin UI
 │   ├── src/
 │   │   ├── pages/             #   Home, Shop, ProductDetail, Cart, Checkout, Compare, Sell, Account, admin/…
@@ -142,8 +142,8 @@ No Maven or Tomcat install needed (Maven wrapper + embedded Tomcat).
 
 ### 2. Clone
 ```bash
-git clone https://github.com/classtapacademy/NAMMA-MOBILES.git
-cd NAMMA-MOBILES
+git clone https://github.com/Mudassir017/FONEZONE.git
+cd FONEZONE
 ```
 
 ### 3. Your own Clerk app (free)
@@ -236,4 +236,4 @@ This repo is meant to be read. Good places to start:
 - UI building blocks from [shadcn/ui](https://ui.shadcn.com), [Aceternity UI](https://ui.aceternity.com) and [Magic UI](https://magicui.design); font: Plus Jakarta Sans (SIL OFL).
 - Phone specs and prices are sample data (the iPhone Duo and iPhone 18 Pro Max use Apple India's published prices, Nov 2026); verify before any real sale.
 
-<div align="center"><sub>Built for learning by <b>classtapacademy</b> · Namma Mobiles 📱</sub></div>
+<div align="center"><sub>Built for learning by <b>Mudassir017</b> · FoneZone 📱</sub></div>
